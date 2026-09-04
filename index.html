@@ -70,7 +70,7 @@
         
         .menu-toggle { display: none; font-size: 1.8rem; color: var(--color-white); cursor: pointer; position: relative; z-index: 1002; }
 
-        /* --- HERO --- */
+        /* --- HERO (ESCRITORIO) --- */
         #inicio { 
             position: relative; 
             height: 100vh; 
@@ -146,7 +146,7 @@
         .step-col:hover .step-icon { transform: translateY(-8px); color: var(--color-orange); }
         .step-arrow { position: absolute; top: 15px; right: -12px; color: var(--color-orange); font-size: 1.2rem; }
 
-        /* --- SERVICIOS --- */
+        /* --- SERVICIOS (INTERACTIVOS CON HOVER REVEAL) --- */
         #servicios { padding: 100px 5vw; background-color: var(--color-light); }
         .section-desc { max-width: 700px; margin: 15px auto 0 auto; line-height: 1.6; text-align: center; }
 
@@ -167,6 +167,7 @@
             cursor: pointer; 
             border-top: 4px solid transparent;
             outline: none;
+            width: 100%;
         }
 
         .servicio-card:hover, .servicio-card.is-active-mobile { 
@@ -190,6 +191,7 @@
             margin-bottom: 30px; 
             transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1); 
             transform-origin: left center; 
+            position: relative; z-index: 5;
         }
         .servicio-card:hover .s-icon, .servicio-card.is-active-mobile .s-icon { 
             transform: scale(1.15); 
@@ -224,7 +226,7 @@
         }
 
         .servicio-info p { font-size: 0.85rem; line-height: 1.6; margin-bottom: 20px; color: var(--color-gray); }
-        .servicio-info ul { margin-bottom: 25px; }
+        .servicio-info ul { margin-bottom: 25px; padding-left: 0; }
         .servicio-info ul li { font-size: 0.8rem; line-height: 1.5; margin-bottom: 8px; padding-left: 15px; position: relative; color: var(--color-navy); font-weight: 500; }
         .servicio-info ul li::before { content: '•'; color: var(--color-orange); position: absolute; left: 0; top: 0; font-weight: bold; }
         
@@ -247,9 +249,17 @@
         
         .node { position: absolute; width: 180px; display: flex; align-items: center; gap: 15px; z-index: 3; transition: transform 0.3s; }
         .node:hover { transform: scale(1.05); }
-        .node-icon { width: 50px; height: 50px; min-width: 50px; background-color: var(--color-white); border: 2px solid var(--color-orange); border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 1.2rem; color: var(--color-navy); box-shadow: 0 5px 15px rgba(0,0,0,0.1); transition: var(--transition); }
-        .node:hover .node-icon { background-color: var(--color-orange); color: var(--color-white); }
-        .node-text h4 { font-size: 0.85rem; font-weight: 800; text-transform: uppercase; margin-bottom: 5px; transition: color 0.3s; }
+        
+        .node-icon { 
+            width: 50px; height: 50px; min-width: 50px; 
+            background-color: var(--color-white); border: 2px solid var(--color-orange); 
+            border-radius: 50%; display: flex; justify-content: center; align-items: center; 
+            font-size: 1.2rem; color: var(--color-navy); box-shadow: 0 5px 15px rgba(0,0,0,0.1); 
+            position: relative; z-index: 2; transition: var(--transition);
+        }
+        .node-icon i { position: relative; z-index: 5; color: inherit; } 
+        
+        .node-text h4 { font-size: 0.85rem; font-weight: 800; text-transform: uppercase; margin-bottom: 5px; transition: var(--transition); }
         .node-text p { font-size: 0.75rem; line-height: 1.4; }
         
         .node-tl { top: 0; left: -80px; }
@@ -263,11 +273,19 @@
         .metodologia-timeline::before { content: ''; position: absolute; top: 45px; left: 10%; width: 80%; height: 0; border-top: 2px dashed var(--color-orange); z-index: 1; }
         
         .metodologia-step { flex: 1; text-align: center; position: relative; z-index: 2; padding: 0 15px; transition: var(--transition); }
-        .m-icon-wrap { width: 90px; height: 90px; background-color: var(--color-white); border: 2px solid var(--color-navy); border-radius: 50%; display: flex; justify-content: center; align-items: center; margin: 0 auto 25px auto; position: relative; font-size: 2rem; color: var(--color-navy); transition: var(--transition); }
-        .m-number { position: absolute; top: -5px; left: -5px; width: 30px; height: 30px; background-color: var(--color-orange); color: var(--color-white); border-radius: 50%; display: flex; justify-content: center; align-items: center; font-weight: 800; font-size: 0.9rem; }
+        
+        .m-icon-wrap { 
+            width: 90px; height: 90px; background-color: var(--color-white); border: 2px solid var(--color-navy); 
+            border-radius: 50%; display: flex; justify-content: center; align-items: center; 
+            margin: 0 auto 25px auto; position: relative; z-index: 2; 
+            font-size: 2rem; color: var(--color-navy); transition: var(--transition); 
+        }
+        .m-icon-wrap i { position: relative; z-index: 5; color: inherit; }
+        
+        .m-number { position: absolute; top: -5px; left: -5px; width: 30px; height: 30px; background-color: var(--color-orange); color: var(--color-white); border-radius: 50%; display: flex; justify-content: center; align-items: center; font-weight: 800; font-size: 0.9rem; z-index: 6; }
         
         .metodologia-step:hover .m-icon-wrap { background-color: var(--color-navy); color: var(--color-white); transform: translateY(-10px); border-color: var(--color-orange); box-shadow: 0 10px 20px rgba(233,79,37,0.2); }
-        .metodologia-step h4 { font-size: 1.1rem; font-weight: 800; margin-bottom: 10px; transition: color 0.3s; }
+        .metodologia-step h4 { font-size: 1.1rem; font-weight: 800; margin-bottom: 10px; transition: var(--transition); }
         .metodologia-step p { font-size: 0.85rem; line-height: 1.6; }
 
         /* --- POR QUÉ LISSAFIN --- */
@@ -275,10 +293,12 @@
         #porque .section-title { color: var(--color-white); }
         
         .porque-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; margin-top: 50px; text-align: center; }
-        .porque-card { transition: var(--transition); border-radius: 10px; }
-        .porque-card i { font-size: 2.5rem; color: var(--color-orange); margin-bottom: 20px; transition: transform 0.3s; }
+        .porque-card { transition: var(--transition); border-radius: 12px; }
+        
+        .porque-card i { font-size: 2.5rem; color: var(--color-orange); margin-bottom: 20px; transition: transform 0.3s; position: relative; z-index: 5; }
+        
         .porque-card:hover i { transform: scale(1.1); text-shadow: 0 0 15px rgba(233,79,37,0.5); }
-        .porque-card h4 { color: var(--color-white); font-size: 1rem; font-weight: 700; text-transform: uppercase; margin-bottom: 15px; }
+        .porque-card h4 { color: var(--color-white); font-size: 1rem; font-weight: 700; text-transform: uppercase; margin-bottom: 15px; transition: var(--transition); }
         .porque-card p { font-size: 0.9rem; line-height: 1.6; color: rgba(255,255,255,0.8); }
 
         /* --- CTA BANNER --- */
@@ -299,16 +319,16 @@
         
         .contacto-form { flex: 2; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
         .form-full { grid-column: span 2; }
-        .contacto-form input, .contacto-form textarea { width: 100%; padding: 15px; border: 1px solid #ccc; border-radius: 4px; font-family: var(--font-main); transition: border-color 0.3s; outline: none; }
+        .contacto-form input, .contacto-form textarea { width: 100%; padding: 15px; border: 1px solid #ccc; border-radius: 4px; font-family: var(--font-main); transition: border-color 0.3s; outline: none; box-sizing: border-box; }
         .contacto-form input:focus, .contacto-form textarea:focus { border-color: var(--color-orange); }
         .contacto-form textarea { height: 120px; resize: none; }
-        .btn-submit { background-color: var(--color-orange); color: var(--color-white); padding: 15px; border-radius: 4px; font-weight: 800; text-transform: uppercase; width: 100%; transition: var(--transition); margin-top: 10px; }
+        .btn-submit { background-color: var(--color-orange); color: var(--color-white); padding: 15px; border-radius: 4px; font-weight: 800; text-transform: uppercase; width: 100%; transition: var(--transition); margin-top: 10px; border: none; cursor: pointer;}
         .btn-submit:hover { background-color: #d1411b; }
         
         .contacto-info { flex: 1; display: flex; flex-direction: column; justify-content: flex-start; border-left: 1px solid #eee; padding-left: 40px; }
         .contacto-info img { max-width: 200px; margin-bottom: 30px; }
         .info-row { display: flex; gap: 15px; margin-bottom: 20px; align-items: flex-start; }
-        .info-row i { color: var(--color-navy); font-size: 1.2rem; margin-top: 2px; }
+        .info-row i { color: var(--color-navy); font-size: 1.2rem; margin-top: 2px; position: relative; z-index: 5; }
         .info-row p { font-size: 0.9rem; color: var(--color-navy); font-weight: 500; }
 
         /* --- FOOTER --- */
@@ -327,7 +347,7 @@
         .footer-bottom-links a { margin-left: 20px; transition: color 0.3s; }
         .footer-bottom-links a:hover { color: var(--color-white); }
 
-        /* --- RESPONSIVO MÓVIL (Y ANIMACIONES AUTO-SCROLL EXCLUSIVAS) --- */
+        /* --- RESPONSIVO MÓVIL Y MAGIA DE ANIMACIÓN --- */
         @media(max-width: 1200px) {
             .hero-diagonal { clip-path: polygon(0 0, 70% 0, 60% 100%, 0% 100%); }
             .hero-content { width: 55%; padding-left: 4vw; }
@@ -335,10 +355,19 @@
         }
         
         @media(max-width: 992px) {
-            .hero-diagonal { width: 100%; clip-path: none; background-color: rgba(255, 255, 255, 0.95); }
-            .hero-img-bg { width: 100%; } 
+            /* HERO MÓVIL: FONDO INMERSIVO CON OVERLAY OSCURO PARA IMPACTO PREMIUM */
+            .hero-diagonal { 
+                width: 100%; clip-path: none; 
+                background: linear-gradient(135deg, rgba(31,35,70,0.85) 0%, rgba(31,35,70,0.98) 100%);
+            }
+            .hero-img-bg { width: 100%; opacity: 0.5; } 
+            
             .hero-content { width: 100%; padding-left: 5vw; padding-right: 5vw; padding-top: 100px; }
-            .hero-icons-row { justify-content: center; }
+            .hero-content h1, .hero-content p.desc, .hero-subtitle, .hero-icon-item { color: var(--color-white) !important; }
+            .hero-content h1 span { color: var(--color-orange) !important; }
+            
+            /* Corrección desbordamiento Íconos Hero */
+            .hero-icons-row { justify-content: flex-start; flex-wrap: wrap; gap: 15px; }
             .hero-icon-divider { display: none; }
             
             .soluciones-wrapper, .vision-container, .contacto-content { flex-direction: column; gap: 50px; }
@@ -346,40 +375,72 @@
             .step-col { min-width: 150px; margin-bottom: 20px; }
             .step-arrow { display: none; }
             
-            /* Ajustes Servicios Móvil */
-            .servicio-card.is-active-mobile { transform: none; } 
-            .servicio-card.is-active-mobile .s-icon { transform: scale(1.08); } 
+            /* Ajustes estrictos de Servicios para móvil (Cero brincos y zoom contenido) */
+            .servicios-grid { grid-template-columns: repeat(2, 1fr); }
+            .servicio-card.is-active-mobile { transform: translateY(-5px); } /* Solo un brinco sutil, sin zoom que rompa la pantalla */
+            .servicio-card.is-active-mobile .s-icon { transform: scale(1.05); } 
             
             /* Ajustes Visión Integral Móvil (Con Mini-Anillo Giratorio) */
             .diagram-center, .diagram-ring { display: none; } 
-            .diagram-container { width: 100%; height: auto; flex-direction: column; gap: 20px; display: flex; }
-            .node { position: relative; top: auto !important; bottom: auto !important; left: auto !important; right: auto !important; width: 100%; flex-direction: row !important; text-align: left !important; align-items: center; }
+            .diagram-container { width: 100%; height: auto; flex-direction: column; gap: 25px; display: flex; }
+            .node { position: relative; top: auto !important; bottom: auto !important; left: auto !important; right: auto !important; width: 100%; flex-direction: row !important; text-align: left !important; align-items: center; justify-content: flex-start; }
+            .node-icon { margin-right: 15px; margin-bottom: 0 !important; }
             
-            /* --- MAGIA MÓVIL: ANILLO GIRATORIO EN VISIÓN INTEGRAL --- */
-            .node-icon { position: relative; }
             .node-icon::after {
                 content: ''; position: absolute; top: -8px; left: -8px; right: -8px; bottom: -8px;
                 border: 1px dashed var(--color-gray); border-radius: 50%;
-                animation: spin 20s linear infinite; z-index: -1; opacity: 0.3;
+                animation: spin 20s linear infinite; z-index: 1; opacity: 0.3;
                 transition: var(--transition);
             }
-            .node.is-active-mobile .node-icon::after { border-color: var(--color-orange); opacity: 1; animation-duration: 8s; } /* Gira más rápido al encenderse */
+            .node.is-active-mobile .node-icon::after { border-color: var(--color-orange); opacity: 1; animation-duration: 6s; } 
             .node.is-active-mobile .node-icon { background-color: var(--color-orange); color: var(--color-white); box-shadow: 0 0 15px rgba(233, 79, 37, 0.4); border-color: var(--color-orange); }
             .node.is-active-mobile h4 { color: var(--color-orange); }
 
-            /* --- MAGIA MÓVIL: METODOLOGÍA INTERACTIVA --- */
-            .timeline { flex-wrap: wrap; gap: 30px; }
-            .timeline::before { display: none; }
-            .timeline-item { min-width: 150px; }
-            .metodologia-step { padding: 15px; border-radius: 10px; border: 1px solid transparent; }
-            .metodologia-step.is-active-mobile { background-color: var(--color-white); transform: scale(1.03); box-shadow: 0 10px 25px rgba(0,0,0,0.05); border-color: rgba(233,79,37,0.1); }
-            .metodologia-step.is-active-mobile .m-icon-wrap { background-color: var(--color-navy); color: var(--color-white); border-color: var(--color-orange); box-shadow: 0 0 20px rgba(233, 79, 37, 0.3); }
+            /* --- CORRECCIÓN METODOLOGÍA MÓVIL --- */
+            .metodologia-timeline { flex-direction: column; gap: 35px; } /* ¡CORREGIDO EL OVERFLOW! */
+            .metodologia-timeline::before { display: none; }
+            .metodologia-step { width: 100%; padding: 20px 15px; border-radius: 12px; display: flex; flex-direction: column; align-items: center; }
+            
+            .m-icon-wrap::after {
+                content: ''; position: absolute; top: -10px; left: -10px; right: -10px; bottom: -10px;
+                border: 1px dashed var(--color-gray); border-radius: 50%;
+                animation: spin 20s linear infinite reverse; z-index: 1; opacity: 0.3;
+                transition: var(--transition);
+            }
+            
+            .metodologia-step.is-active-mobile { 
+                background-color: var(--color-white); 
+                transform: scale(1.03); 
+                box-shadow: 0 15px 30px rgba(31, 35, 70, 0.08); 
+                border-color: rgba(233,79,37,0.1); 
+            }
+            .metodologia-step.is-active-mobile .m-icon-wrap { 
+                background-color: var(--color-navy); 
+                color: var(--color-white); 
+                border-color: var(--color-orange); 
+                box-shadow: 0 0 20px rgba(233, 79, 37, 0.3); 
+            }
+            .metodologia-step.is-active-mobile .m-icon-wrap::after {
+                border-color: var(--color-orange); opacity: 1; animation-duration: 5s;
+            }
+            .metodologia-step.is-active-mobile h4 { color: var(--color-orange); }
 
-            /* --- MAGIA MÓVIL: POR QUÉ LISSAFIN INTERACTIVO --- */
-            .porque-grid { grid-template-columns: repeat(2, 1fr); }
-            .porque-card { padding: 25px 15px; }
-            .porque-card.is-active-mobile { background-color: rgba(255, 255, 255, 0.04); border: 1px solid rgba(233, 79, 37, 0.2); transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
-            .porque-card.is-active-mobile i { transform: scale(1.2); color: var(--color-orange); text-shadow: 0 0 15px rgba(233, 79, 37, 0.6); }
+            /* --- MAGIA MÓVIL: POR QUÉ LISSAFIN INTERACTIVO (NEÓN) --- */
+            .porque-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+            .porque-card { padding: 30px 15px; border-radius: 12px; background-color: rgba(255,255,255,0.02); }
+            
+            .porque-card.is-active-mobile { 
+                background-color: rgba(255, 255, 255, 0.05); 
+                border: 1px solid rgba(233, 79, 37, 0.3); 
+                transform: translateY(-5px); 
+                box-shadow: 0 10px 25px rgba(0,0,0,0.3); 
+            }
+            .porque-card.is-active-mobile i { 
+                transform: scale(1.2); 
+                color: var(--color-orange); 
+                text-shadow: 0 0 20px rgba(233, 79, 37, 0.8); 
+            }
+            .porque-card.is-active-mobile h4 { color: var(--color-orange); }
 
             /* Footer & Contacto ajustados */
             .footer-top { flex-direction: column; gap: 30px; text-align: center; }
@@ -403,7 +464,6 @@
             .header-nav.active .nav-links { flex-direction: column; text-align: center; gap: 40px; }
             .header-nav.active .nav-links li a { font-size: 1.5rem; }
             
-            #inicio { padding-top: 80px; height: auto; padding-bottom: 60px; }
             .hero-buttons { flex-direction: column; width: 100%; }
             .btn-hero-solid, .btn-hero-outline { width: 100%; text-align: center; }
             
@@ -907,7 +967,7 @@
         document.querySelectorAll('.fade-up').forEach(el => appearOnScroll.observe(el));
 
         // --- HOVER AUTOMÁTICO EN MÓVIL (AUTO-REVEAL AL SCROLLEAR) ---
-        // Este observador enciende las animaciones de Servicios, Nodos, Metodología y Por Qué en Celular
+        // Este observador activa las animaciones "hover" solitas cuando bajan en el celular
         const mobileHoverOptions = { root: null, rootMargin: "-30% 0px -30% 0px", threshold: 0 };
         const mobileHoverObserver = new IntersectionObserver(function(entries) {
             entries.forEach(entry => {

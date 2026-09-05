@@ -146,7 +146,7 @@
         .step-col:hover .step-icon { transform: translateY(-8px); color: var(--color-orange); }
         .step-arrow { position: absolute; top: 15px; right: -12px; color: var(--color-orange); font-size: 1.2rem; }
 
-        /* --- SERVICIOS (INTERACTIVOS CON HOVER REVEAL) --- */
+        /* --- SERVICIOS --- */
         #servicios { padding: 100px 5vw; background-color: var(--color-light); }
         .section-desc { max-width: 700px; margin: 15px auto 0 auto; line-height: 1.6; text-align: center; }
 
@@ -239,14 +239,7 @@
         .vision-left h2 { font-size: 2.5rem; font-weight: 800; line-height: 1.2; margin-bottom: 20px; }
         .vision-left p { line-height: 1.7; margin-bottom: 20px; }
         
-     .vision-right { 
-			flex: 1.5; 
-			display: flex; 
-			justify-content: center; 
-			align-items: center; 
-			position: relative; 
-			min-height: 400px; 
-			}
+        .vision-right { flex: 1.5; display: flex; justify-content: center; align-items: center; position: relative; min-height: 400px; }
         
         .diagram-container { position: relative; width: 450px; height: 450px; display: flex; justify-content: center; align-items: center; }
         .diagram-center { width: 180px; height: 180px; background-color: var(--color-navy); border-radius: 50%; display: flex; justify-content: center; align-items: center; z-index: 2; position: relative; box-shadow: 0 10px 30px rgba(31,35,70,0.4); }
@@ -268,7 +261,6 @@
         
         .node-text h4 { font-size: 0.85rem; font-weight: 800; text-transform: uppercase; margin-bottom: 5px; transition: var(--transition); }
         .node-text p { font-size: 0.75rem; line-height: 1.4; }
-
         
         .node-tl { top: 0; left: -80px; }
         .node-tr { top: 0; right: -80px; flex-direction: row-reverse; text-align: right; }
@@ -363,19 +355,10 @@
         }
         
         @media(max-width: 992px) {
-            /* HERO MÓVIL: FONDO INMERSIVO CON OVERLAY OSCURO PARA IMPACTO PREMIUM */
-          .hero-diagonal { 
-                width: 100%; clip-path: none; 
-                background: linear-gradient(135deg, rgba(31,35,70,0.45) 0%, rgba(31,35,70,0.65) 100%);
-            }
-            .hero-img-bg { width: 100%; opacity: 0.5; } 
-            
+            .hero-diagonal { width: 100%; clip-path: none; background-color: rgba(255, 255, 255, 0.95); }
+            .hero-img-bg { width: 100%; } 
             .hero-content { width: 100%; padding-left: 5vw; padding-right: 5vw; padding-top: 100px; }
-            .hero-content h1, .hero-content p.desc, .hero-subtitle, .hero-icon-item { color: var(--color-white) !important; }
-            .hero-content h1 span { color: var(--color-orange) !important; }
-            
-            /* Corrección desbordamiento Íconos Hero */
-            .hero-icons-row { justify-content: flex-start; flex-wrap: wrap; gap: 15px; }
+            .hero-icons-row { justify-content: center; }
             .hero-icon-divider { display: none; }
             
             .soluciones-wrapper, .vision-container, .contacto-content { flex-direction: column; gap: 50px; }
@@ -388,11 +371,12 @@
             .servicio-card.is-active-mobile { transform: translateY(-5px); } 
             .servicio-card.is-active-mobile .s-icon { transform: scale(1.05); } 
             
-           /* --- AJUSTE CRÍTICO VISIÓN INTEGRAL MÓVIL (CORRECCIÓN DE ANCHO Y APARICIÓN DE ENGRANES) --- */
+            /* --- SOLUCIÓN DEFINITIVA: VISIÓN INTEGRAL MÓVIL --- */
             .diagram-center, .diagram-ring { display: none !important; } 
             .vision-right { width: 100% !important; display: block !important; min-height: auto !important; margin-top: 20px; }
-            .diagram-container { width: 100% !important; max-width: 100% !important; height: auto !important; flex-direction: column !important; gap: 20px !important; display: flex !important; margin: 0 auto !important; }
-           .node { 
+            .diagram-container { width: 100% !important; max-width: 100% !important; height: auto !important; flex-direction: column !important; gap: 15px !important; display: flex !important; margin: 0 auto !important; position: relative !important; }
+            
+            .node { 
                 position: relative !important; 
                 top: auto !important; bottom: auto !important; left: auto !important; right: auto !important; 
                 width: 100% !important; 
@@ -401,13 +385,13 @@
                 text-align: left !important; 
                 align-items: center !important; 
                 justify-content: flex-start !important;
-                background: var(--color-light);
-                padding: 15px;
-                border-radius: 8px;
-                border: 1px solid var(--color-border);
+                background: var(--color-light) !important;
+                padding: 15px !important;
+                border-radius: 8px !important;
+                border: 1px solid var(--color-border) !important;
             }
             .node-tr, .node-br { flex-direction: row !important; text-align: left !important; }
-            .node-vision, .node-icon { margin-right: 15px !important; margin-bottom: 0 !important; min-width: 50px !important; }
+            .node-icon { margin-right: 15px !important; margin-bottom: 0 !important; min-width: 50px !important; }
             
             .node-icon::after {
                 content: ''; position: absolute; top: -8px; left: -8px; right: -8px; bottom: -8px;
@@ -420,7 +404,7 @@
             .node.is-active-mobile h4 { color: var(--color-orange); }
 
             /* --- CORRECCIÓN METODOLOGÍA MÓVIL --- */
-            .metodologia-timeline { flex-direction: column; gap: 35px; } /* ¡CORREGIDO EL OVERFLOW! */
+            .metodologia-timeline { flex-direction: column; gap: 35px; }
             .metodologia-timeline::before { display: none; }
             .metodologia-step { width: 100%; padding: 20px 15px; border-radius: 12px; display: flex; flex-direction: column; align-items: center; }
             
@@ -487,61 +471,8 @@
             .header-nav.active .nav-links { flex-direction: column; text-align: center; gap: 40px; }
             .header-nav.active .nav-links li a { font-size: 1.5rem; }
             
-            /* FIX HERO MÓVIL EXACTO Y COMPACTO */
-            #inicio { 
-                height: 100vh; /* Altura 100% estándar */
-                height: 100dvh; /* Altura 100% dinámica para móviles modernos */
-                min-height: auto; /* QUITAR EL 700PX QUE HACÍA QUE DESBORDARA */
-                padding-top: 20px; 
-                padding-bottom: 10px; 
-            }
-            .hero-content {
-                padding-top: 0;
-                padding-left: 4vw; /* Alineación perfecta a la izquierda */
-                padding-right: 4vw;
-            }
-            
-            .hero-subtitle { margin-bottom: 10px; font-size: 0.7rem; }
-            
-            /* TÍTULO ELÁSTICO PARA QUE NO SE ROMPA "TRANSFORMAMOS" */
-            .hero-content h1 { 
-                font-size: clamp(2.3rem, 9vw, 2.8rem) !important; 
-                line-height: 1.1; 
-                margin-bottom: 15px; 
-            }
-            
-            .hero-content p.desc { 
-                font-size: 0.85rem; 
-                margin-bottom: 20px; 
-                line-height: 1.4;
-                max-width: 100%;
-            }
-            
-            .hero-buttons { 
-                flex-direction: column; 
-                width: 100%; 
-                gap: 10px; 
-                margin-bottom: 25px; 
-            }
-            .btn-hero-solid, .btn-hero-outline { 
-                width: 100%; 
-                text-align: center; 
-                padding: 12px 15px;
-                font-size: 0.75rem;
-            }
-            
-            /* ICONOS INFERIORES EN GRID 2X2 PARA ENCAJAR PERFECTO EN 1 PANTALLA */
-            .hero-icons-row { 
-                gap: 15px 5px; 
-                justify-content: space-between; 
-                width: 100%;
-            }
-            .hero-icon-item { 
-                width: 48%; /* Fuerza 2 columnas */
-                font-size: 0.7rem; 
-                gap: 6px;
-            }
-            .hero-icon-item i { font-size: 1.2rem; }
+            .hero-buttons { flex-direction: column; width: 100%; }
+            .btn-hero-solid, .btn-hero-outline { width: 100%; text-align: center; }
             
             section { padding: 80px 5vw; }
             .servicios-grid { grid-template-columns: 1fr; }
@@ -549,6 +480,74 @@
             
             .footer-bottom { flex-direction: column; gap: 15px; text-align: center; }
             .footer-bottom-links a { margin: 0 10px; }
+        }
+
+        /* --- OPTIMIZACIÓN EXCLUSIVA MÓVIL: PORTADA 1 SOLA PANTALLA, TÍTULO EN 1 RENGLÓN Y FOTO CLARA --- */
+        @media(max-width: 768px) {
+            #inicio { 
+                height: 100vh !important; 
+                height: 100dvh !important; 
+                min-height: auto !important; 
+                padding-top: 50px !important; 
+                padding-bottom: 10px !important; 
+            }
+
+            .hero-diagonal { 
+                width: 100% !important; clip-path: none !important; 
+                background: linear-gradient(135deg, rgba(31,35,70,0.50) 0%, rgba(31,35,70,0.75) 100%) !important; 
+            }
+            .hero-img-bg { width: 100% !important; opacity: 0.85 !important; } 
+
+            .hero-content {
+                padding-top: 0 !important;
+                padding-left: 4vw !important; 
+                padding-right: 4vw !important;
+            }
+            
+            .hero-subtitle { margin-bottom: 4px !important; font-size: 0.6rem !important; }
+            
+            .hero-content h1 { 
+                font-size: clamp(2rem, 7.8vw, 2.5rem) !important; 
+                line-height: 1.15 !important; 
+                margin-bottom: 8px !important; 
+                color: var(--color-white) !important;
+            }
+            .hero-content h1 span { color: var(--color-orange) !important; }
+            
+            .hero-content p.desc { 
+                font-size: 0.78rem !important; 
+                margin-bottom: 12px !important; 
+                line-height: 1.3 !important;
+                max-width: 100% !important;
+                color: rgba(255,255,255,0.95) !important;
+            }
+            
+            .hero-buttons { 
+                flex-direction: column !important; 
+                width: 100% !important; 
+                gap: 6px !important; 
+                margin-bottom: 12px !important; 
+            }
+            .btn-hero-solid, .btn-hero-outline { 
+                width: 100% !important; 
+                text-align: center !important; 
+                padding: 9px 12px !important;
+                font-size: 0.7rem !important;
+            }
+            .btn-hero-outline { color: var(--color-white) !important; border-color: var(--color-white) !important; }
+            
+            .hero-icons-row { 
+                gap: 8px 4px !important; 
+                justify-content: space-between !important; 
+                width: 100% !important;
+            }
+            .hero-icon-item { 
+                width: 48% !important; 
+                font-size: 0.65rem !important; 
+                gap: 5px !important;
+                color: var(--color-white) !important;
+            }
+            .hero-icon-item i { font-size: 1.1rem !important; color: var(--color-orange) !important; }
         }
     </style>
 </head>

@@ -239,60 +239,35 @@
         .vision-left h2 { font-size: 2.5rem; font-weight: 800; line-height: 1.2; margin-bottom: 20px; }
         .vision-left p { line-height: 1.7; margin-bottom: 20px; }
         
-             /* Forzamos a que el contenedor de Visión Integral se muestre ordenado en móvil */
-    .vision-right {
-        width: 100% !important;
-        display: block !important;
-        min-height: auto !important;
-        margin-top: 30px;
-    }
-
-    .diagram-container {
-        width: 100% !important;
-        height: auto !important;
-        display: flex !important;
-        flex-direction: column !important;
-        gap: 20px !important;
-        position: relative !important;
-    }
-
-    /* Ocultamos el círculo central decorativo en móvil para ganar espacio */
-    .diagram-center, .diagram-ring {
-        display: none !important;
-    }
-
-    /* Transformamos los nodos en tarjetas limpias de izquierda a derecha */
-    .node {
-        position: relative !important;
-        top: auto !important;
-        bottom: auto !important;
-        left: auto !important;
-        right: auto !important;
-        width: 100% !important;
-        display: flex !important;
-        flex-direction: row !important;
-        text-align: left !important;
-        align-items: center !important;
-        background: var(--color-light);
-        padding: 15px;
-        border-radius: 8px;
-        border: 1px solid var(--color-border);
-    }
-
-    .node-icon {
-        margin-right: 15px !important;
-        margin-bottom: 0 !important;
-        min-width: 50px !important;
-    }
-
-    .node-text h4 {
-        font-size: 0.9rem !important;
-        color: var(--color-navy);
-    }
-
-    .node-text p {
-        font-size: 0.8rem !important;
-    }
+     .vision-right { 
+			flex: 1.5; 
+			display: flex; 
+			justify-content: center; 
+			align-items: center; 
+			position: relative; 
+			min-height: 400px; 
+			}
+        
+        .diagram-container { position: relative; width: 450px; height: 450px; display: flex; justify-content: center; align-items: center; }
+        .diagram-center { width: 180px; height: 180px; background-color: var(--color-navy); border-radius: 50%; display: flex; justify-content: center; align-items: center; z-index: 2; position: relative; box-shadow: 0 10px 30px rgba(31,35,70,0.4); }
+        .diagram-center img { width: 110px; }
+        
+        .diagram-ring { position: absolute; width: 320px; height: 320px; border: 2px dashed #ccc; border-radius: 50%; z-index: 1; animation: spin 40s linear infinite; }
+        
+        .node { position: absolute; width: 180px; display: flex; align-items: center; gap: 15px; z-index: 3; transition: transform 0.3s; }
+        .node:hover { transform: scale(1.05); }
+        
+        .node-icon { 
+            width: 50px; height: 50px; min-width: 50px; 
+            background-color: var(--color-white); border: 2px solid var(--color-orange); 
+            border-radius: 50%; display: flex; justify-content: center; align-items: center; 
+            font-size: 1.2rem; color: var(--color-navy); box-shadow: 0 5px 15px rgba(0,0,0,0.1); 
+            position: relative; z-index: 2; transition: var(--transition);
+        }
+        .node-icon i { position: relative; z-index: 5; color: inherit; } 
+        
+        .node-text h4 { font-size: 0.85rem; font-weight: 800; text-transform: uppercase; margin-bottom: 5px; transition: var(--transition); }
+        .node-text p { font-size: 0.75rem; line-height: 1.4; }
 
         
         .node-tl { top: 0; left: -80px; }

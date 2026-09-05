@@ -357,10 +357,13 @@
         @media(max-width: 992px) {
             /* HERO MÓVIL: FONDO INMERSIVO CON OVERLAY OSCURO PARA IMPACTO PREMIUM */
             .hero-diagonal { 
-                width: 100%; clip-path: none; 
-                background: linear-gradient(135deg, rgba(31,35,70,0.85) 0%, rgba(31,35,70,0.98) 100%);
+                width: 100%; 
+                /* CORTE DINÁMICO EN LA BASE PARA MÓVIL */
+                clip-path: polygon(0 0, 100% 0, 100% 96%, 0% 100%);
+                /* NIVELADOR DE TRANSPARENCIA (Ajusta los últimos valores 0.6 y 0.85 para controlar qué tan oscuro se ve) */
+                background: linear-gradient(135deg, rgba(31,35,70,0.6) 0%, rgba(31,35,70,0.85) 100%);
             }
-            .hero-img-bg { width: 100%; opacity: 0.5; } 
+            .hero-img-bg { width: 100%; opacity: 0.8; } /* Aumenté la opacidad de la foto para que destaque más */
             
             .hero-content { width: 100%; padding-left: 5vw; padding-right: 5vw; padding-top: 100px; }
             .hero-content h1, .hero-content p.desc, .hero-subtitle, .hero-icon-item { color: var(--color-white) !important; }
@@ -464,6 +467,14 @@
             .header-nav.active .nav-links { flex-direction: column; text-align: center; gap: 40px; }
             .header-nav.active .nav-links li a { font-size: 1.5rem; }
             
+            /* Ajuste de desbordamiento en el h1 de la portada */
+            .hero-content h1 {
+                font-size: clamp(2.2rem, 9vw, 2.8rem) !important; /* Adaptado para que "Transformamos" encaje */
+                word-wrap: break-word; /* Rompe la palabra si la pantalla es muy enana */
+                padding-right: 15px; /* Margen de seguridad derecho */
+            }
+            
+            #inicio { padding-top: 80px; height: auto; padding-bottom: 60px; }
             .hero-buttons { flex-direction: column; width: 100%; }
             .btn-hero-solid, .btn-hero-outline { width: 100%; text-align: center; }
             

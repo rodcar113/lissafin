@@ -70,7 +70,7 @@
         
         .menu-toggle { display: none; font-size: 1.8rem; color: var(--color-white); cursor: pointer; position: relative; z-index: 1002; }
 
-        /* --- HERO --- */
+        /* --- HERO (ESCRITORIO) --- */
         #inicio { 
             position: relative; 
             height: 100vh; 
@@ -355,19 +355,10 @@
         }
         
         @media(max-width: 992px) {
-            /* HERO MÓVIL: FONDO INMERSIVO CON OVERLAY OSCURO PARA IMPACTO PREMIUM */
-            .hero-diagonal { 
-                width: 100%; clip-path: none; 
-                background: linear-gradient(135deg, rgba(31,35,70,0.85) 0%, rgba(31,35,70,0.98) 100%);
-            }
-            .hero-img-bg { width: 100%; opacity: 0.5; } 
-            
+            .hero-diagonal { width: 100%; clip-path: none; background-color: rgba(255, 255, 255, 0.95); }
+            .hero-img-bg { width: 100%; } 
             .hero-content { width: 100%; padding-left: 5vw; padding-right: 5vw; padding-top: 100px; }
-            .hero-content h1, .hero-content p.desc, .hero-subtitle, .hero-icon-item { color: var(--color-white) !important; }
-            .hero-content h1 span { color: var(--color-orange) !important; }
-            
-            /* Corrección desbordamiento Íconos Hero */
-            .hero-icons-row { justify-content: flex-start; flex-wrap: wrap; gap: 15px; }
+            .hero-icons-row { justify-content: center; }
             .hero-icon-divider { display: none; }
             
             .soluciones-wrapper, .vision-container, .contacto-content { flex-direction: column; gap: 50px; }
@@ -397,7 +388,7 @@
             .node.is-active-mobile h4 { color: var(--color-orange); }
 
             /* --- CORRECCIÓN METODOLOGÍA MÓVIL --- */
-            .metodologia-timeline { flex-direction: column; gap: 35px; } /* ¡CORREGIDO EL OVERFLOW! */
+            .metodologia-timeline { flex-direction: column; gap: 35px; }
             .metodologia-timeline::before { display: none; }
             .metodologia-step { width: 100%; padding: 20px 15px; border-radius: 12px; display: flex; flex-direction: column; align-items: center; }
             
@@ -464,61 +455,73 @@
             .header-nav.active .nav-links { flex-direction: column; text-align: center; gap: 40px; }
             .header-nav.active .nav-links li a { font-size: 1.5rem; }
             
-            /* FIX HERO MÓVIL EXACTO Y COMPACTO */
+            /* --- OPTIMIZACIÓN EXCLUSIVA MÓVIL: 1 SOLA PANTALLA Y FOTO CLARA --- */
             #inicio { 
-                height: 100vh; /* Altura 100% estándar */
-                height: 100dvh; /* Altura 100% dinámica para móviles modernos */
-                min-height: auto; /* QUITAR EL 700PX QUE HACÍA QUE DESBORDARA */
-                padding-top: 70px; 
-                padding-bottom: 20px; 
+                height: 100dvh; /* Altura exacta de 1 sola pantalla */
+                min-height: auto; 
+                padding-top: 60px; /* Pega el texto más arriba hacia la barra del menú */
+                padding-bottom: 10px; 
             }
+
+            /* Capa Azul más transparente para que la foto de fondo se note más completa y nítida */
+            .hero-diagonal { 
+                width: 100%; clip-path: none; 
+                background: linear-gradient(135deg, rgba(31,35,70,0.65) 0%, rgba(31,35,70,0.85) 100%);
+            }
+            .hero-img-bg { width: 100%; opacity: 0.75; } /* Foto mucho más visible */
+
             .hero-content {
                 padding-top: 0;
-                padding-left: 4vw; /* Alineación perfecta a la izquierda */
+                padding-left: 4vw; 
                 padding-right: 4vw;
             }
             
-            .hero-subtitle { margin-bottom: 10px; font-size: 0.7rem; }
+            .hero-subtitle { margin-bottom: 6px; font-size: 0.65rem; }
             
-            /* TÍTULO ELÁSTICO PARA QUE NO SE ROMPA "TRANSFORMAMOS" */
+            /* TÍTULO MÁS GRANDE Y CLAMP PARA QUE "TRANSFORMAMOS" SALGA EN 1 SOLO RENGLÓN */
             .hero-content h1 { 
-                font-size: clamp(1.7rem, 7.5vw, 2.2rem) !important; 
-                line-height: 1.1; 
-                margin-bottom: 15px; 
+                font-size: clamp(1.9rem, 7vw, 2.4rem) !important; 
+                line-height: 1.15; 
+                margin-bottom: 10px; 
+                color: var(--color-white) !important;
             }
+            .hero-content h1 span { color: var(--color-orange) !important; }
             
             .hero-content p.desc { 
-                font-size: 0.85rem; 
-                margin-bottom: 20px; 
-                line-height: 1.4;
+                font-size: 0.8rem; 
+                margin-bottom: 15px; 
+                line-height: 1.35;
                 max-width: 100%;
+                color: rgba(255,255,255,0.9) !important;
             }
             
             .hero-buttons { 
                 flex-direction: column; 
                 width: 100%; 
-                gap: 10px; 
-                margin-bottom: 25px; 
+                gap: 8px; 
+                margin-bottom: 15px; 
             }
             .btn-hero-solid, .btn-hero-outline { 
                 width: 100%; 
                 text-align: center; 
-                padding: 12px 15px;
-                font-size: 0.75rem;
+                padding: 10px 15px;
+                font-size: 0.7rem;
             }
+            .btn-hero-outline { color: var(--color-white) !important; border-color: var(--color-white) !important; }
             
-            /* ICONOS INFERIORES EN GRID 2X2 PARA ENCAJAR PERFECTO EN 1 PANTALLA */
+            /* Íconos inferiores en Grid 2x2 perfectamente ajustados */
             .hero-icons-row { 
-                gap: 15px 5px; 
+                gap: 10px 4px; 
                 justify-content: space-between; 
                 width: 100%;
             }
             .hero-icon-item { 
-                width: 48%; /* Fuerza 2 columnas */
-                font-size: 0.7rem; 
-                gap: 6px;
+                width: 48%; 
+                font-size: 0.65rem; 
+                gap: 5px;
+                color: var(--color-white) !important;
             }
-            .hero-icon-item i { font-size: 1.2rem; }
+            .hero-icon-item i { font-size: 1.1rem; color: var(--color-orange) !important; }
             
             section { padding: 80px 5vw; }
             .servicios-grid { grid-template-columns: 1fr; }

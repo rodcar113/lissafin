@@ -70,7 +70,7 @@
         
         .menu-toggle { display: none; font-size: 1.8rem; color: var(--color-white); cursor: pointer; position: relative; z-index: 1002; }
 
-        /* --- HERO (ESCRITORIO) --- */
+        /* --- HERO --- */
         #inicio { 
             position: relative; 
             height: 100vh; 
@@ -357,13 +357,10 @@
         @media(max-width: 992px) {
             /* HERO MÓVIL: FONDO INMERSIVO CON OVERLAY OSCURO PARA IMPACTO PREMIUM */
             .hero-diagonal { 
-                width: 100%; 
-                /* CORTE DINÁMICO EN LA BASE PARA MÓVIL */
-                clip-path: polygon(0 0, 100% 0, 100% 96%, 0% 100%);
-                /* NIVELADOR DE TRANSPARENCIA (Ajusta los últimos valores 0.6 y 0.85 para controlar qué tan oscuro se ve) */
-                background: linear-gradient(135deg, rgba(31,35,70,0.6) 0%, rgba(31,35,70,0.85) 100%);
+                width: 100%; clip-path: none; 
+                background: linear-gradient(135deg, rgba(31,35,70,0.85) 0%, rgba(31,35,70,0.98) 100%);
             }
-            .hero-img-bg { width: 100%; opacity: 0.8; } /* Aumenté la opacidad de la foto para que destaque más */
+            .hero-img-bg { width: 100%; opacity: 0.5; } 
             
             .hero-content { width: 100%; padding-left: 5vw; padding-right: 5vw; padding-top: 100px; }
             .hero-content h1, .hero-content p.desc, .hero-subtitle, .hero-icon-item { color: var(--color-white) !important; }
@@ -380,7 +377,7 @@
             
             /* Ajustes estrictos de Servicios para móvil (Cero brincos y zoom contenido) */
             .servicios-grid { grid-template-columns: repeat(2, 1fr); }
-            .servicio-card.is-active-mobile { transform: translateY(-5px); } /* Solo un brinco sutil, sin zoom que rompa la pantalla */
+            .servicio-card.is-active-mobile { transform: translateY(-5px); } 
             .servicio-card.is-active-mobile .s-icon { transform: scale(1.05); } 
             
             /* Ajustes Visión Integral Móvil (Con Mini-Anillo Giratorio) */
@@ -467,16 +464,61 @@
             .header-nav.active .nav-links { flex-direction: column; text-align: center; gap: 40px; }
             .header-nav.active .nav-links li a { font-size: 1.5rem; }
             
-            /* Ajuste de desbordamiento en el h1 de la portada */
-            .hero-content h1 {
-                font-size: clamp(2.2rem, 9vw, 2.8rem) !important; /* Adaptado para que "Transformamos" encaje */
-                word-wrap: break-word; /* Rompe la palabra si la pantalla es muy enana */
-                padding-right: 15px; /* Margen de seguridad derecho */
+            /* FIX HERO MÓVIL EXACTO Y COMPACTO */
+            #inicio { 
+                height: 100vh; /* Altura 100% estándar */
+                height: 100dvh; /* Altura 100% dinámica para móviles modernos */
+                min-height: auto; /* QUITAR EL 700PX QUE HACÍA QUE DESBORDARA */
+                padding-top: 70px; 
+                padding-bottom: 20px; 
+            }
+            .hero-content {
+                padding-top: 0;
+                padding-left: 4vw; /* Alineación perfecta a la izquierda */
+                padding-right: 4vw;
             }
             
-            #inicio { padding-top: 80px; height: auto; padding-bottom: 60px; }
-            .hero-buttons { flex-direction: column; width: 100%; }
-            .btn-hero-solid, .btn-hero-outline { width: 100%; text-align: center; }
+            .hero-subtitle { margin-bottom: 10px; font-size: 0.7rem; }
+            
+            /* TÍTULO ELÁSTICO PARA QUE NO SE ROMPA "TRANSFORMAMOS" */
+            .hero-content h1 { 
+                font-size: clamp(1.7rem, 7.5vw, 2.2rem) !important; 
+                line-height: 1.1; 
+                margin-bottom: 15px; 
+            }
+            
+            .hero-content p.desc { 
+                font-size: 0.85rem; 
+                margin-bottom: 20px; 
+                line-height: 1.4;
+                max-width: 100%;
+            }
+            
+            .hero-buttons { 
+                flex-direction: column; 
+                width: 100%; 
+                gap: 10px; 
+                margin-bottom: 25px; 
+            }
+            .btn-hero-solid, .btn-hero-outline { 
+                width: 100%; 
+                text-align: center; 
+                padding: 12px 15px;
+                font-size: 0.75rem;
+            }
+            
+            /* ICONOS INFERIORES EN GRID 2X2 PARA ENCAJAR PERFECTO EN 1 PANTALLA */
+            .hero-icons-row { 
+                gap: 15px 5px; 
+                justify-content: space-between; 
+                width: 100%;
+            }
+            .hero-icon-item { 
+                width: 48%; /* Fuerza 2 columnas */
+                font-size: 0.7rem; 
+                gap: 6px;
+            }
+            .hero-icon-item i { font-size: 1.2rem; }
             
             section { padding: 80px 5vw; }
             .servicios-grid { grid-template-columns: 1fr; }
@@ -499,7 +541,7 @@
     <header id="navbar">
         <div class="header-logo">
             <a href="#inicio" class="logo-link">
-                <!-- Logo sin filtro para colores originales -->
+                <!-- Logo -->
                 <img src="logo_2.png" alt="Lissafin Logo" class="nav-logo" id="logo-img">
             </a>
         </div>
@@ -978,7 +1020,6 @@
         document.querySelectorAll('.fade-up').forEach(el => appearOnScroll.observe(el));
 
         // --- HOVER AUTOMÁTICO EN MÓVIL (AUTO-REVEAL AL SCROLLEAR) ---
-        // Este observador activa las animaciones "hover" solitas cuando bajan en el celular
         const mobileHoverOptions = { root: null, rootMargin: "-30% 0px -30% 0px", threshold: 0 };
         const mobileHoverObserver = new IntersectionObserver(function(entries) {
             entries.forEach(entry => {
